@@ -2687,39 +2687,55 @@ h1,
 
 @media (max-width: 620px) {
   .topbar, .hero__inner, .trust-strip { width: calc(100% - 32px); }
-  .topbar { top: 16px; }
+  .topbar {
+    top: max(12px, env(safe-area-inset-top));
+    min-height: 66px;
+    padding: 0 14px;
+  }
   .brand__mark { width: 31px; height: 34px; }
-  .brand__wordmark { width: 160px; }
+  .brand__wordmark { width: min(160px, 45vw); }
+  .mobile-nav {
+    max-height: calc(100svh - 92px);
+    overflow-y: auto;
+  }
   .boot-loader__brand { gap: 12px; }
   .boot-loader__brand img:first-child { width: 47px; height: 51px; }
   .boot-loader__brand img:last-child { width: min(210px, 62vw); }
-  .hero { min-height: 800px; }
-  .hero__inner { min-height: 800px; padding-top: 154px; padding-bottom: 165px; }
+  .hero { min-height: auto; }
+  .hero__inner {
+    min-height: 0;
+    padding-top: 132px;
+    padding-bottom: 52px;
+  }
   .eyebrow { min-height: 38px; margin-bottom: 24px; padding: 0 15px; font-size: 0.76rem; }
-  h1 { margin-bottom: 24px; font-size: clamp(3.15rem, 15.2vw, 4.55rem); line-height: 1.02; }
-  .hero__lede { margin-bottom: 36px; font-size: 1rem; line-height: 1.55; }
+  h1 { margin-bottom: 22px; font-size: clamp(2.8rem, 13vw, 4rem); line-height: 1.02; }
+  .hero__lede { margin-bottom: 30px; font-size: 1rem; line-height: 1.5; }
   .desktop-break { display: none; }
-  .hero__actions { flex-direction: column; align-items: stretch; gap: 12px; }
+  .hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    width: min(280px, 100%);
+  }
   .button { width: 100%; min-width: 0; }
   .hero__actions .button--primary {
-    align-self: flex-start;
-    width: 230px;
-    min-width: 230px;
+    width: 100%;
+    min-width: 0;
   }
-  .hero__visual { top: 310px; right: -245px; width: 520px; opacity: 0.22; }
+  .hero__visual { display: none; }
   .hero::after { right: -34%; width: 690px; opacity: 0.2; }
   .dot-column { left: 66%; opacity: 0.26; }
-  .trust-strip { display: block; padding: 28px 0 34px; }
+  .trust-strip { display: block; padding: 24px 0 30px; }
   .trust-strip p { margin-bottom: 18px; font-size: 0.92rem; }
-  .client-logos { justify-content: space-between; }
+  .client-logos { flex-wrap: wrap; justify-content: flex-start; gap: 12px 32px; }
   .client-logo b { font-size: 1rem; }
 
   .friction {
-    padding: 116px 16px 48px;
+    padding: 88px 16px 48px;
   }
 
   .friction__intro {
-    margin-bottom: 48px;
+    margin-bottom: 42px;
   }
 
   .friction__intro h2 {
@@ -2731,16 +2747,25 @@ h1,
   }
 
   .friction-card {
-    min-height: 340px;
+    min-height: 0;
     padding: 30px 24px;
   }
 
+  .friction-card .hex-number {
+    margin-top: 22px;
+    margin-bottom: 20px;
+  }
+
+  .friction__grid {
+    gap: 20px;
+  }
+
   .services {
-    padding: 116px 16px 56px;
+    padding: 88px 16px 52px;
   }
 
   .services__intro {
-    margin-bottom: 58px;
+    margin-bottom: 48px;
   }
 
   .services__intro h2 {
@@ -2752,15 +2777,15 @@ h1,
   }
 
   .service {
-    min-height: 405px;
+    min-height: 0;
     padding: 0;
     align-items: center;
     text-align: center;
   }
 
   .service__icon {
-    width: 158px;
-    height: 184px;
+    width: 150px;
+    height: 164px;
     margin-bottom: 14px;
   }
 
@@ -2769,26 +2794,33 @@ h1,
   }
 
   .service > p {
+    margin-bottom: 14px;
     margin-right: auto;
     margin-left: auto;
     font-size: 1rem;
   }
 
   .service > span {
+    max-width: 100%;
+    margin-top: 0;
     font-size: 0.9rem;
+  }
+
+  .services__grid {
+    row-gap: 50px;
   }
 
   .services__cta {
     width: 170px;
-    margin-top: 72px;
+    margin-top: 52px;
   }
 
   .industries {
-    padding: 116px 16px 56px;
+    padding: 88px 16px 52px;
   }
 
   .industries__intro {
-    margin-bottom: 42px;
+    margin-bottom: 36px;
   }
 
   .industries__intro .eyebrow {
@@ -2805,8 +2837,11 @@ h1,
 
   .industry-row {
     grid-template-columns: 45px minmax(0, 1fr);
-    min-height: 350px;
-    padding: 38px 0 26px;
+    grid-template-rows: auto auto;
+    align-items: start;
+    row-gap: 18px;
+    min-height: 0;
+    padding: 32px 0;
   }
 
   .industry-row__number {
@@ -2826,17 +2861,18 @@ h1,
   .industry-row__icon {
     grid-column: 2;
     justify-self: start;
-    width: 180px;
-    height: 155px;
-    margin-top: 12px;
+    width: 160px;
+    height: 138px;
+    margin-top: 0;
+    --industry-icon-offset: 0px;
   }
 
   .stack-section {
-    padding: 92px 16px 80px;
+    padding: 82px 16px 64px;
   }
 
   .stack-section__intro {
-    margin-bottom: 64px;
+    margin-bottom: 48px;
   }
 
   .stack-section__intro h2 {
@@ -2848,7 +2884,7 @@ h1,
   }
 
   .stack-logos {
-    gap: 42px 16px;
+    gap: 34px 14px;
   }
 
   .stack-logo {
@@ -2859,16 +2895,16 @@ h1,
   .stack-logo--zapier span,
   .stack-logo--stripe span,
   .stack-logo--openai span {
-    font-size: 1.35rem;
+    font-size: clamp(1rem, 5vw, 1.25rem);
   }
 
   .stack-logo__mark {
-    width: 32px;
-    height: 32px;
+    width: 29px;
+    height: 29px;
   }
 
   .process__header {
-    top: 92px;
+    top: 76px;
   }
 
   .process__header h2 {
@@ -2880,7 +2916,7 @@ h1,
   }
 
   .process__arc {
-    top: 333px;
+    top: 306px;
     width: calc(100% - 24px);
     height: 160px;
   }
@@ -2895,11 +2931,11 @@ h1,
 
   .process,
   .process__sticky {
-    min-height: 808px;
+    min-height: 740px;
   }
 
   .process__carousel {
-    top: 383px;
+    top: 354px;
     width: calc(100% - 24px);
   }
 
@@ -2925,11 +2961,11 @@ h1,
   }
 
   .case-studies {
-    padding: 92px 16px 64px;
+    padding: 82px 16px 58px;
   }
 
   .case-studies__intro {
-    margin-bottom: 58px;
+    margin-bottom: 48px;
   }
 
   .case-studies__intro h2 {
@@ -2941,12 +2977,12 @@ h1,
   }
 
   .case-study {
-    gap: 30px;
-    padding: 36px 4px 42px;
+    gap: 28px;
+    padding: 32px 4px 36px;
   }
 
   .case-study__copy {
-    min-height: 365px;
+    min-height: 0;
   }
 
   .case-study__metric {
@@ -2967,6 +3003,7 @@ h1,
 
   .case-study__button {
     width: 216px;
+    margin-top: 32px;
   }
 
   .case-studies__cta {
@@ -2975,7 +3012,7 @@ h1,
   }
 
   .testimonials {
-    padding: 116px 16px 80px;
+    padding: 88px 16px 64px;
   }
 
   .testimonials__intro .eyebrow {
@@ -2991,7 +3028,7 @@ h1,
   }
 
   .testimonial {
-    margin-top: 42px;
+    margin-top: 38px;
   }
 
   .testimonial__portrait,
@@ -3012,7 +3049,7 @@ h1,
   }
 
   .testimonial figure {
-    margin-top: 96px;
+    margin-top: 88px;
   }
 
   .testimonial blockquote {
@@ -3026,9 +3063,9 @@ h1,
 
   .results-strip {
     grid-template-columns: 1fr;
-    gap: 48px;
-    margin-top: 68px;
-    padding-top: 62px;
+    gap: 36px;
+    margin-top: 56px;
+    padding-top: 50px;
   }
 
   .result p strong {
@@ -3040,11 +3077,11 @@ h1,
   }
 
   .engagements {
-    padding: 116px 16px 64px;
+    padding: 88px 16px 54px;
   }
 
   .engagements__intro {
-    margin-bottom: 58px;
+    margin-bottom: 48px;
   }
 
   .engagements__intro .eyebrow {
@@ -3065,9 +3102,18 @@ h1,
   }
 
   .engagement {
-    min-height: 455px;
-    padding: 40px 18px 38px;
+    min-height: 0;
+    padding: 36px 18px 34px;
     border-top: 2px dashed rgba(214, 173, 99, 0.42);
+  }
+
+  .engagement__description {
+    min-height: 0;
+    margin: 30px 0 22px;
+  }
+
+  .engagement__cta {
+    margin-top: 32px;
   }
 
   .engagement:last-of-type {
@@ -3084,11 +3130,11 @@ h1,
   }
 
   .faq {
-    padding: 92px 16px 44px;
+    padding: 80px 16px 40px;
   }
 
   .faq__inner {
-    gap: 48px;
+    gap: 36px;
   }
 
   .faq__intro .eyebrow {
@@ -3100,8 +3146,8 @@ h1,
   }
 
   .faq-item button {
-    min-height: 84px;
-    padding-top: 16px;
+    min-height: 74px;
+    padding-top: 14px;
   }
 
   .faq-item button > span:first-child {
@@ -3110,25 +3156,26 @@ h1,
   }
 
   .faq-item.is-open button {
-    min-height: 68px;
+    min-height: 60px;
   }
 
   .faq-item__answer p {
-    padding-bottom: 34px;
+    padding-bottom: 28px;
     font-size: 0.98rem;
   }
 
   .final-cta {
-    min-height: 650px;
-    padding: 126px 16px 0;
+    min-height: 0;
+    padding: 80px 16px 0;
   }
 
   .final-cta__frame {
-    height: 524px;
+    height: auto;
+    min-height: 474px;
   }
 
   .final-cta__content {
-    padding: 78px 18px 0;
+    padding: 64px 18px 58px;
   }
 
   .final-cta__content h2 {
@@ -3144,7 +3191,8 @@ h1,
   .final-cta__actions {
     flex-direction: column;
     gap: 12px;
-    margin-top: 48px;
+    width: min(280px, 100%);
+    margin: 38px auto 0;
   }
 
   .final-cta__actions .button--secondary {
@@ -3165,7 +3213,7 @@ h1,
 
   .site-footer {
     min-height: auto;
-    padding: 76px 16px 30px;
+    padding: 68px 16px 26px;
   }
 
   .site-footer h2 {
@@ -3176,8 +3224,8 @@ h1,
 
   .site-footer__links {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 50px 28px;
-    margin-top: 58px;
+    gap: 44px 28px;
+    margin-top: 48px;
   }
 
   .site-footer__links h3 {
@@ -3195,12 +3243,12 @@ h1,
   .site-footer__meta {
     align-items: flex-start;
     flex-direction: column;
-    gap: 28px;
-    margin-top: 72px;
+    gap: 24px;
+    margin-top: 54px;
   }
 
   .footer-brand {
-    margin-top: 38px;
+    margin-top: 30px;
   }
 
   .contact-page .topbar {
@@ -3208,7 +3256,7 @@ h1,
   }
 
   .contact-hero {
-    padding: 126px 16px 0;
+    padding: 106px 16px 0;
   }
 
   .contact-hero__inner {
@@ -3222,11 +3270,11 @@ h1,
   }
 
   .contact-intro {
-    padding: 38px 22px 42px;
+    padding: 34px 20px 38px;
   }
 
   .contact-intro h1 {
-    font-size: 2.75rem;
+    font-size: clamp(2.35rem, 11vw, 2.75rem);
   }
 
   .contact-intro__lede {
@@ -3234,50 +3282,55 @@ h1,
   }
 
   .contact-booking {
-    grid-template-columns: 100px minmax(0, 1fr);
-    gap: 14px;
-    margin-top: 38px;
+    grid-template-columns: 88px minmax(0, 1fr);
+    gap: 12px;
+    margin-top: 32px;
+    padding: 10px;
   }
 
   .contact-booking > img {
-    width: 100px;
-    height: 124px;
+    width: 88px;
+    height: 110px;
   }
 
   .contact-booking .button {
-    width: fit-content;
-    min-width: 150px;
+    width: 100%;
+    min-width: 0;
     min-height: 54px;
     gap: 10px;
-    padding: 0 12px;
+    padding: 10px 12px;
     font-size: 0.82rem;
+    line-height: 1.25;
+    text-align: center;
+    white-space: normal;
   }
 
   .contact-booking p {
-    margin-top: 18px;
+    margin-top: 14px;
     font-size: 0.72rem;
   }
 
   .contact-trust {
-    margin-top: 40px;
+    margin-top: 32px;
   }
 
   .contact-trust > div:not(.contact-trust__socials) {
     flex-wrap: wrap;
     justify-content: flex-start;
+    gap: 18px 28px;
   }
 
   .contact-form-card {
-    padding: 42px 22px;
+    padding: 36px 20px;
   }
 
   .contact-form-card h2 {
-    margin-bottom: 44px;
+    margin-bottom: 34px;
     font-size: 1.6rem;
   }
 
   .contact-form-card form {
-    gap: 24px;
+    gap: 22px;
   }
 
   .contact-form-card input,
@@ -3286,21 +3339,21 @@ h1,
   }
 
   .contact-form__note {
-    margin-top: 45px;
+    margin-top: 32px;
     font-size: 0.9rem;
   }
 
   .contact-details {
-    --contact-details-pattern-top: 92px;
-    padding: 92px 16px 0;
+    --contact-details-pattern-top: 76px;
+    padding: 76px 16px 0;
   }
 
   .contact-details__frame {
-    padding: 50px 0;
+    padding: 32px 0;
   }
 
   .contact-details article {
-    padding: 38px 28px;
+    padding: 32px 20px;
   }
 
   .contact-details h2 {
@@ -3308,15 +3361,15 @@ h1,
   }
 
   .contact-faq {
-    padding: 104px 16px 56px;
+    padding: 80px 16px 44px;
   }
 
   .contact-footer {
-    padding-top: 56px;
+    padding-top: 48px;
   }
 
   .contact-faq__inner {
-    gap: 48px;
+    gap: 36px;
   }
 
   .contact-faq__intro h2 {
@@ -3324,13 +3377,106 @@ h1,
   }
 
   .contact-faq-item button {
-    min-height: 84px;
-    padding-top: 16px;
+    min-height: 74px;
+    padding-top: 14px;
   }
 
   .contact-faq-item button > span:first-child {
     max-width: 295px;
     font-size: 1.16rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .topbar,
+  .hero__inner,
+  .trust-strip,
+  .contact-page .topbar {
+    width: calc(100% - 24px);
+  }
+
+  .brand__wordmark {
+    width: min(144px, 42vw);
+  }
+
+  .hero__inner {
+    min-height: 0;
+    padding-top: 116px;
+    padding-bottom: 48px;
+  }
+
+  h1 {
+    font-size: clamp(2.55rem, 12.5vw, 3.25rem);
+  }
+
+  .eyebrow {
+    max-width: 100%;
+    padding: 0 13px;
+    text-align: center;
+  }
+
+  .friction__intro h2,
+  .services__intro h2,
+  .industries__intro h2,
+  .stack-section__intro h2,
+  .process__header h2,
+  .case-studies__intro h2,
+  .testimonials__intro h2,
+  .engagements__intro h2,
+  .faq__intro h2,
+  .final-cta__content h2,
+  .contact-faq__intro h2 {
+    font-size: clamp(2rem, 10vw, 2.4rem);
+  }
+
+  .industry-row {
+    grid-template-columns: 38px minmax(0, 1fr);
+  }
+
+  .industry-row__icon {
+    width: 148px;
+    height: 130px;
+  }
+
+  .stack-logo {
+    gap: 6px;
+  }
+
+  .stack-logo span,
+  .stack-logo--zapier span,
+  .stack-logo--stripe span,
+  .stack-logo--openai span {
+    font-size: clamp(0.92rem, 4.7vw, 1.1rem);
+  }
+
+  .stack-logo__mark {
+    width: 27px;
+    height: 27px;
+  }
+
+  .engagement__heading h3 {
+    font-size: 1.55rem;
+  }
+
+  .site-footer__links {
+    gap: 40px 20px;
+  }
+
+  .contact-booking {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-booking > img {
+    width: 92px;
+    height: 92px;
+  }
+
+  .contact-booking > div {
+    padding-top: 0;
+  }
+
+  .contact-details h2 {
+    overflow-wrap: anywhere;
   }
 }
 
